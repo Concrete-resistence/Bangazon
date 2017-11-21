@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201711181620226_addingDataModels.Designer.cs">
       <DependentUpon>201711181620226_addingDataModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711210224272_addedRegister.cs" />
+    <Compile Include="Migrations\201711210224272_addedRegister.Designer.cs">
+      <DependentUpon>201711210224272_addedRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -346,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711181620226_addingDataModels.resx">
       <DependentUpon>201711181620226_addingDataModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210224272_addedRegister.resx">
+      <DependentUpon>201711210224272_addedRegister.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

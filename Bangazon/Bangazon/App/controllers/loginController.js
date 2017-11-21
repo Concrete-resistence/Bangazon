@@ -1,6 +1,10 @@
-﻿app.controller("loginController", ["$scope", "$http", "$location", function ($scope, $http, $location) {
+﻿app.controller("loginController", ["$rootScope", "$scope", "$http", "$location", function ($rootScope, $scope, $http, $location) {
     $scope.username = "";
     $scope.password = "";
+    $rootScope.currentToken = "";
+    $scope.auth = {};
+    $scope.userLogin = {};
+    $scope.alerts = [];
 
     $scope.login = function () {
         $scope.error = "";
@@ -15,10 +19,11 @@
                     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 return str.join("&");
             },
-            data: { grant_type: "password", username: $scope.username, password: $scope.password }
+            data: { grant_type: "password", username: $scope.userLogin.username, password: $scope.userLogin.password }
         })
             .then(function (result) {
                 sessionStorage.setItem('token', result.data.access_token);
+                currentToken = sessionStorage.getItem('token');
                 $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
                 $location.path("/");
 
@@ -27,6 +32,22 @@
                 $scope.error = result.data.error_description;
                 $scope.inProgress = false;
             });
-    }
-}
-]);
+
+
+    };
+
+    $scope.registerUser = () => {
+        var auth = $scope.auth;
+        $http({
+            method: 'POST',
+            url: "/api/Account/Register",
+             data: { UserName: auth.username, Password: auth.password, confirmPassword: auth.confirm, Email: auth.email, Location: auth.location, Address: auth.address, FirstName: auth.firstName, LastName: auth.lastName }
+        })
+            .then((resultz) => {
+                resolve(resultz);
+            }).catch((error) => {
+                reject(error);
+            });
+    };
+
+}]);
