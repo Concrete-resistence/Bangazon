@@ -2,14 +2,17 @@
     $routeProvider
         .when("/",
         {
-            templateUrl: "/App/views/home/home.html",
-            controller: "homeController"
+            templateUrl: "/App/views/product.html",
+            controller: "productController"
         })
         .when("/login",
         {
             templateUrl: "/App/views/login.html",
             controller: "loginController"
-        });
+        })
+
+        .otherwise("/"
+        );
 }]);
 
 
@@ -23,13 +26,16 @@ app.run(["$rootScope", "$http", "$location", function ($rootScope, $http, $locat
         var anonymousPage = false;
         var originalPath = currRoute.originalPath;
 
+        console.log("originalpath:", originalPath);
+
         if (originalPath) {
-            anonymousPage = originalPath.indexOf("/login") !== -1;
+            anonymousPage = originalPath.indexOf("/login") !== -1 ||
+                            originalPath == "/";
         }
 
         if (!anonymousPage && !$rootScope.isLoggedIn()) {
             event.preventDefault();
-            $location.path("/login");
+            $location.path("/");
         }
     });
 

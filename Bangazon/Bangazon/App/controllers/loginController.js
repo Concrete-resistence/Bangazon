@@ -45,6 +45,7 @@
         })
             .then((resultz) => {
                 resolve(resultz);
+                console.log("resultz", resultz);
             }).catch((error) => {
                 reject(error);
             });

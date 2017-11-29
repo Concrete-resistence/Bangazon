@@ -228,6 +228,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrivateProductsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataModels\Categories.cs" />
     <Compile Include="DataModels\Orders.cs" />
@@ -263,8 +264,10 @@
     <Content Include="App\appConfig.js" />
     <Content Include="App\controllers\homeController.js" />
     <Content Include="App\controllers\loginController.js" />
+    <Content Include="App\controllers\productController.js" />
     <Content Include="App\views\home\home.html" />
     <Content Include="App\views\login.html" />
+    <Content Include="App\views\product.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
